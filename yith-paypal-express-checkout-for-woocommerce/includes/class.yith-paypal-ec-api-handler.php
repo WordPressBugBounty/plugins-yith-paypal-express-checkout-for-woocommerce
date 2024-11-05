@@ -87,6 +87,13 @@ if ( ! class_exists( 'YITH_PayPal_EC_API_Handler' ) ) {
 		protected $request_headers = array();
 
 		/**
+		 * Instance for the response
+		 *
+		 * @var YITH_PayPal_EC_Response
+		 */
+		protected $response;
+
+		/**
 		 * Name of class for the response
 		 *
 		 * @var string
@@ -120,6 +127,20 @@ if ( ! class_exists( 'YITH_PayPal_EC_API_Handler' ) ) {
 		 * @var string
 		 */
 		protected $api_signature;
+		
+		/**
+		 * API Environment
+		 *
+		 * @var string
+		 */
+		protected $environment;
+		
+		/**
+		 * API Subject
+		 *
+		 * @var string
+		 */
+		protected $api_subject;
 
 		/**
 		 * Constructor
