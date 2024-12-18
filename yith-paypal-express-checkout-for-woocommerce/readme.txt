@@ -84,6 +84,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 YITH PayPal Express Checkout for WooCommerce will add a new tab called "PayPal Express Checkout" in "YITH" menu item. There, you will find all YITH plugins with quick access to plugin setting page.
 
 == Changelog ==
+
+= 1.44.0 - Released on 18 December 2024 =
+* New: Support for WooCommerce 9.5
+* Update: YITH plugin framework
+
 = 1.43.0 - Released on 05 November 2024 =
 * New: Support for WooCommerce 9.4
 * New: Support for WordPress 6.7

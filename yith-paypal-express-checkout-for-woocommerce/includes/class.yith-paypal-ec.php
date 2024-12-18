@@ -89,10 +89,6 @@ if ( ! class_exists( 'YITH_PayPal_EC' ) ) {
 
 			$this->load();
 
-			add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-
-			// load the plugin framework.
-			add_action( 'plugins_loaded', array( $this, 'plugin_fw_loader' ), 15 );
 			// add the gateway on woocommerce payment gateways list.
 			add_filter( 'woocommerce_payment_gateways', array( $this, 'add_yith_paypal_ec' ), 10 );
 
@@ -313,34 +309,6 @@ if ( ! class_exists( 'YITH_PayPal_EC' ) ) {
 			$is_admin      = is_admin() && ! ( defined( 'DOING_AJAX' ) && DOING_AJAX && $context_check );
 
 			return apply_filters( 'yith_paypal_ec_check_is_admin', $is_admin );
-		}
-
-		/**
-		 * Load localisation files.
-		 *
-		 * @since 1.0
-		 * @access public
-		 */
-		public function load_plugin_textdomain() {
-			load_plugin_textdomain( 'yith-paypal-express-checkout-for-woocommerce', false, YITH_PAYPAL_EC_DIR . '/languages' );
-		}
-
-		/**
-		 * Load YIT Plugin Framework
-		 *
-		 * @access public
-		 *
-		 * @return void
-		 * @since  1.0
-		 */
-		public function plugin_fw_loader() {
-			if ( ! defined( 'YIT_CORE_PLUGIN' ) ) {
-				global $plugin_fw_data;
-				if ( ! empty( $plugin_fw_data ) ) {
-					$plugin_fw_file = array_shift( $plugin_fw_data );
-					require_once $plugin_fw_file;
-				}
-			}
 		}
 
 	}

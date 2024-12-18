@@ -2388,3 +2388,41 @@ if ( ! function_exists( 'yith_plugin_fw_kses_allowed_svg_tags' ) ) {
 		);
 	}
 }
+
+if ( ! function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
+	/**
+	 * Load plugin text-domain.
+	 *
+	 * @param string $domain         The text-domain.
+	 * @param string $languages_path Path of the "languages" plugin folder.
+	 *
+	 * @since 4.7.0
+	 */
+	function yith_plugin_fw_load_plugin_textdomain( $domain, $languages_path ) {
+		/** @var WP_Textdomain_Registry $wp_textdomain_registry */
+		global $wp_textdomain_registry;
+
+		$locale = apply_filters( 'plugin_locale', determine_locale(), $domain ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingSinceComment
+
+		$plugin_mo_rel_path = trailingslashit( $languages_path ) . $domain . '-' . $locale . '.mo';
+		$plugin_mo_path     = trailingslashit( WP_PLUGIN_DIR ) . trim( $plugin_mo_rel_path, '/' );
+
+		unload_textdomain( $domain, true );
+
+		$mo_path = $wp_textdomain_registry->get( $domain, $locale );
+
+		if ( $mo_path ) {
+			$template_directory   = trailingslashit( get_template_directory() );
+			$stylesheet_directory = trailingslashit( get_stylesheet_directory() );
+			if ( str_starts_with( $mo_path, $template_directory ) || str_starts_with( $mo_path, $stylesheet_directory ) ) {
+				$mo_file = "{$mo_path}{$locale}.mo";
+			} else {
+				$mo_file = "{$mo_path}{$domain}-{$locale}.mo";
+			}
+
+			load_textdomain( $domain, $mo_file, $locale );
+		}
+
+		load_textdomain( $domain, $plugin_mo_path, $locale );
+	}
+}

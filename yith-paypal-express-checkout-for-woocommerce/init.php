@@ -3,14 +3,14 @@
  * Plugin Name: YITH PayPal Express Checkout for WooCommerce
  * Plugin URI: https://yithemes.com/themes/plugins/yith-paypal-express-checkout-for-woocommerce/
  * Description: <code><strong>YITH PayPal Express Checkout for WooCommerce</strong></code> allows to make payments immediate with PayPal Express Checkout and forget about customers’ complaints about pending orders. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce shop on <strong>YITH</strong></a>.
- * Version: 1.43.0
+ * Version: 1.44.0
  * Author: YITH
  * Author URI: https://yithemes.com/
  * Domain Path: /languages/
  * Text Domain: yith-paypal-express-checkout-for-woocommerce
  *
- * WC requires at least: 9.2
- * WC tested up to: 9.4
+ * WC requires at least: 9.3
+ * WC tested up to: 9.5
  *
  * @package YITH
  */
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( defined( 'YITH_PAYPAL_EC_VERSION' ) ) {
 	return;
 } else {
-	define( 'YITH_PAYPAL_EC_VERSION', '1.43.0' );
+	define( 'YITH_PAYPAL_EC_VERSION', '1.44.0' );
 }
 
 ! defined( 'YITH_PAYPAL_EC_DIR' ) && define( 'YITH_PAYPAL_EC_DIR', plugin_dir_path( __FILE__ ) );
@@ -35,12 +35,10 @@ if ( defined( 'YITH_PAYPAL_EC_VERSION' ) ) {
 ! defined( 'YITH_PAYPAL_EC_ASSETS_URL' ) && define( 'YITH_PAYPAL_EC_ASSETS_URL', YITH_PAYPAL_EC_URL . 'assets' );
 ! defined( 'YITH_PAYPAL_EC_SLUG' ) && define( 'YITH_PAYPAL_EC_SLUG', 'yith-paypal-express-checkout-for-woocommerce' );
 
-/* Plugin Framework Version Check */
-if ( ! function_exists( 'yit_maybe_plugin_fw_loader' ) && file_exists( YITH_PAYPAL_EC_DIR . 'plugin-fw/init.php' ) ) {
-	require_once YITH_PAYPAL_EC_DIR . 'plugin-fw/init.php';
+// Plugin Framework Loader.
+if ( file_exists( plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php' ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'plugin-fw/init.php';
 }
-yit_maybe_plugin_fw_loader( YITH_PAYPAL_EC_DIR );
-
 
 
 if ( ! function_exists( 'yith_paypal_ec_install_premium_woocommerce_admin_notice' ) ) {
@@ -70,6 +68,9 @@ if ( ! function_exists( 'yith_paypal_ec_install' ) ) {
 			return;
 		} else {
 			// Let's start the game.
+			if ( function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
+				yith_plugin_fw_load_plugin_textdomain( 'yith-paypal-express-checkout-for-woocommerce', basename( dirname( __FILE__ ) ) . '/languages' );
+			}
 			require_once YITH_PAYPAL_EC_INC . 'class.yith-paypal-ec.php';
 
 			yith_paypal_ec()->run();
