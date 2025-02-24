@@ -53,6 +53,41 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_Express_Checkout' ) ) {
 		protected $helper;
 
 		/**
+		 * API username
+		 *
+		 * @var string
+		 */
+		protected $api_username;
+
+		/**
+		 * API password
+		 *
+		 * @var string
+		 */
+		protected $api_password;
+
+		/**
+		 * API signature
+		 *
+		 * @var string
+		 */
+		protected $api_signature;
+
+		/**
+		 * API subject
+		 *
+		 * @var string
+		 */
+		protected $api_subject;
+
+		/**
+		 * API endpoint
+		 *
+		 * @var string
+		 */
+		protected $api_endpoint;
+
+		/**
 		 * Constructor.
 		 *
 		 * @since 1.0.0

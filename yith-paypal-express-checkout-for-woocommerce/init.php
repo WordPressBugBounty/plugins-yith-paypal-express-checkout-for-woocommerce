@@ -3,14 +3,15 @@
  * Plugin Name: YITH PayPal Express Checkout for WooCommerce
  * Plugin URI: https://yithemes.com/themes/plugins/yith-paypal-express-checkout-for-woocommerce/
  * Description: <code><strong>YITH PayPal Express Checkout for WooCommerce</strong></code> allows to make payments immediate with PayPal Express Checkout and forget about customers’ complaints about pending orders. <a href="https://yithemes.com/" target="_blank">Get more plugins for your e-commerce shop on <strong>YITH</strong></a>.
- * Version: 1.45.0
+ * Version: 1.46.0
  * Author: YITH
  * Author URI: https://yithemes.com/
  * Domain Path: /languages/
  * Text Domain: yith-paypal-express-checkout-for-woocommerce
+ * Requires Plugins: woocommerce
  *
- * WC requires at least: 9.4
- * WC tested up to: 9.6
+ * WC requires at least: 9.5
+ * WC tested up to: 9.7
  *
  * @package YITH
  */
@@ -23,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( defined( 'YITH_PAYPAL_EC_VERSION' ) ) {
 	return;
 } else {
-	define( 'YITH_PAYPAL_EC_VERSION', '1.45.0' );
+	define( 'YITH_PAYPAL_EC_VERSION', '1.46.0' );
 }
 
 ! defined( 'YITH_PAYPAL_EC_DIR' ) && define( 'YITH_PAYPAL_EC_DIR', plugin_dir_path( __FILE__ ) );

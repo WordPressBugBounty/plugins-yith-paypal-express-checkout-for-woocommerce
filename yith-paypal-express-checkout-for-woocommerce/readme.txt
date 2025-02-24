@@ -5,7 +5,7 @@ Tags: woocommerce paypal express checkout, paypal express checkout, paypal, expr
 Requires PHP: 7.4
 Requires at least: 6.5
 Tested up to: 6.7
-Stable tag: 1.45.0
+Stable tag: 1.46.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html/
 
@@ -84,6 +84,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 YITH PayPal Express Checkout for WooCommerce will add a new tab called "PayPal Express Checkout" in "YITH" menu item. There, you will find all YITH plugins with quick access to plugin setting page.
 
 == Changelog ==
+
+= 1.46.0 - Released on 24 February 2025 =
+* New: Support for WooCommerce 9.7
+* Update: YITH plugin framework
+* Fix: added a fix for deprecation warnings with PHP 8.2
 
 = 1.45.0 - Released on 20 January 2025 =
 * New: Support for WooCommerce 9.6
