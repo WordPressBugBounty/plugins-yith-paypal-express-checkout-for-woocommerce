@@ -56,8 +56,16 @@ if ( ! class_exists( 'YITH_PayPal_EC_Integration' ) ) {
 			if ( defined( 'YITH_YWSBS_PREMIUM' ) && version_compare( YITH_YWSBS_VERSION, '1.4.5', '>' ) ) {
 				require_once YITH_PAYPAL_EC_INC . 'integrations/class.yith-paypal-ec-subscription.php';
 				YITH_PayPal_EC_Subscription(); //phpcs:ignore
+			} elseif ( defined( 'BH_SUBSCRIPTIONS_VERSION' ) ) {
+				add_action( 'bluehost/framework/plugins_loaded', array( $this, 'load_bh_subscriptions_integration' ) );
 			}
 
+		}
+
+		public function load_bh_subscriptions_integration() {
+			require_once YITH_PAYPAL_EC_INC . 'integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php';
+			require_once YITH_PAYPAL_EC_INC . 'integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php';
+			YITH_PayPal_EC_BH_Subscription();
 		}
 
 	}

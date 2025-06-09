@@ -2397,6 +2397,7 @@ if ( ! function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
 	 * @param string $languages_path Path of the "languages" plugin folder.
 	 *
 	 * @since 4.7.0
+	 * @since 4.7.3 Set NOOP_Translations for the specific text-domain if no translation was found.
 	 */
 	function yith_plugin_fw_load_plugin_textdomain( $domain, $languages_path ) {
 		/** @var WP_Textdomain_Registry $wp_textdomain_registry */
@@ -2410,6 +2411,7 @@ if ( ! function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
 		unload_textdomain( $domain, true );
 
 		$mo_path = $wp_textdomain_registry->get( $domain, $locale );
+		$loaded  = false;
 
 		if ( $mo_path ) {
 			$template_directory   = trailingslashit( get_template_directory() );
@@ -2420,9 +2422,22 @@ if ( ! function_exists( 'yith_plugin_fw_load_plugin_textdomain' ) ) {
 				$mo_file = "{$mo_path}{$domain}-{$locale}.mo";
 			}
 
-			load_textdomain( $domain, $mo_file, $locale );
+			$loaded = load_textdomain( $domain, $mo_file, $locale );
 		}
 
-		load_textdomain( $domain, $plugin_mo_path, $locale );
+		if ( load_textdomain( $domain, $plugin_mo_path, $locale ) ) {
+			$loaded = true;
+		}
+
+		if ( ! $loaded && class_exists( 'NOOP_Translations' ) ) {
+			global $l10n;
+
+			static $noop_translations = null;
+			if ( null === $noop_translations ) {
+				$noop_translations = new NOOP_Translations();
+			}
+
+			$l10n[ $domain ] = &$noop_translations;
+		}
 	}
 }
