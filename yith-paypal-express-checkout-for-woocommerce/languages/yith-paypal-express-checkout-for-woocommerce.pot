@@ -2,11 +2,11 @@
 # This file is distributed under the same license as the YITH PayPal Express Checkout for WooCommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH PayPal Express Checkout for WooCommerce 1.49.0\n"
+"Project-Id-Version: YITH PayPal Express Checkout for WooCommerce 1.49.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-paypal-express-checkout-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2025-06-09 10:45:45+00:00\n"
+"POT-Creation-Date: 2025-06-13 10:15:06+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -451,11 +451,11 @@ msgid ""
 "href=\"%s\">PayPal Sandbox Testing Guide</a> for more details."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:295
-#: includes/class.yith-paypal-ec-gateway.php:323
-#: includes/class.yith-paypal-ec-gateway.php:358
-#: includes/class.yith-paypal-ec-gateway.php:469
-#: includes/class.yith-paypal-ec-gateway.php:802
+#: includes/class.yith-paypal-ec-gateway.php:312
+#: includes/class.yith-paypal-ec-gateway.php:340
+#: includes/class.yith-paypal-ec-gateway.php:375
+#: includes/class.yith-paypal-ec-gateway.php:486
+#: includes/class.yith-paypal-ec-gateway.php:819
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:288
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:316
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:351
@@ -466,30 +466,30 @@ msgstr ""
 msgid "An error occurred %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:395
+#: includes/class.yith-paypal-ec-gateway.php:412
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:388
 #. translators: Placeholder is number of order.
 msgid "Billing Agreement was not accepted for the order %d"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:397
+#: includes/class.yith-paypal-ec-gateway.php:414
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:390
 msgid "Billing Agreement was not accepted."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:447
+#: includes/class.yith-paypal-ec-gateway.php:464
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:440
 #. translators: Placeholder 1. error code 2. error message.
 msgid "YITH PayPal EC error: (%1$d) %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:449
+#: includes/class.yith-paypal-ec-gateway.php:466
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:442
 #. translators: Placeholder 1. order id 2. error code 3. error message.
 msgid "Failed payment for order %1$d - %2$s - %3$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:504
+#: includes/class.yith-paypal-ec-gateway.php:521
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:497
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:177
 #: includes/integrations/class.yith-paypal-ec-subscription.php:159
@@ -497,7 +497,7 @@ msgstr ""
 msgid "Payment authorized for order %d"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:505
+#: includes/class.yith-paypal-ec-gateway.php:522
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:498
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:178
 #: includes/integrations/class.yith-paypal-ec-subscription.php:160
@@ -506,7 +506,7 @@ msgid ""
 "or complete to capture funds."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:508
+#: includes/class.yith-paypal-ec-gateway.php:525
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:501
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:181
 #: includes/integrations/class.yith-paypal-ec-subscription.php:163
@@ -514,7 +514,7 @@ msgstr ""
 msgid "Pending payment for order %1$d - %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:510
+#: includes/class.yith-paypal-ec-gateway.php:527
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:503
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:172
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:183
@@ -527,7 +527,7 @@ msgstr ""
 msgid "YITH PayPal EC: %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:515
+#: includes/class.yith-paypal-ec-gateway.php:532
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:508
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:195
 #: includes/integrations/class.yith-paypal-ec-subscription.php:177
@@ -538,7 +538,7 @@ msgstr ""
 msgid "Echeck expected on %1$s for order %2$d"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:517
+#: includes/class.yith-paypal-ec-gateway.php:534
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:510
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:197
 #: includes/integrations/class.yith-paypal-ec-subscription.php:179
@@ -549,7 +549,7 @@ msgstr ""
 msgid "Echeck expected on %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:548
+#: includes/class.yith-paypal-ec-gateway.php:565
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:541
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:231
 #: includes/integrations/class.yith-paypal-ec-subscription.php:213
@@ -560,13 +560,13 @@ msgstr ""
 msgid "Payment failed for order %1$d: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:550
+#: includes/class.yith-paypal-ec-gateway.php:567
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:543
 #. translators: Placeholder status of payment.
 msgid "YITH PayPal EC payment failed: %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:554
+#: includes/class.yith-paypal-ec-gateway.php:571
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:547
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions.php:241
 #: includes/integrations/class.yith-paypal-ec-subscription.php:223
@@ -577,36 +577,36 @@ msgstr ""
 msgid "YITH PayPal EC payment (ID: %s)"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:556
+#: includes/class.yith-paypal-ec-gateway.php:573
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:549
 #. translators: Placeholder 1. order id 2.transaction id.
 msgid "Payment done for order %1$d (ID: %2$s)"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:603
+#: includes/class.yith-paypal-ec-gateway.php:620
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:596
 #. translators: 1 order id 2. error code 3. error message.
 msgid "Unable to complete payment for order %1$d, %2$s - %3$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:604
+#: includes/class.yith-paypal-ec-gateway.php:621
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:597
 msgid "Unable to complete payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:612
+#: includes/class.yith-paypal-ec-gateway.php:629
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:605
 #. translators: 1 order id 2.transaction id.
 msgid "YITH PayPal EC - payment completed for order %1$d - Transaction id: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:614
+#: includes/class.yith-paypal-ec-gateway.php:631
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:607
 #. translators: 1. transaction id.
 msgid "YITH PayPal EC - payment completed. Transaction ID: %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:619
+#: includes/class.yith-paypal-ec-gateway.php:636
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:612
 #. translators: 1 order id 2.transaction id.
 msgid ""
@@ -614,96 +614,96 @@ msgid ""
 "Transaction id: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:620
+#: includes/class.yith-paypal-ec-gateway.php:637
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:613
 msgid "YITH PayPal EC payment - new transaction_id not saved."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:656
+#: includes/class.yith-paypal-ec-gateway.php:673
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:649
 #. translators: 1. order id 2. error code 3. error message.
 msgid "Unable to delete payment for order %1$d, %2$s - %3$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:657
+#: includes/class.yith-paypal-ec-gateway.php:674
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:650
 msgid "Unable to delete payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:660
+#: includes/class.yith-paypal-ec-gateway.php:677
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:653
 #. translators: 1. order id .
 msgid "YITH PayPal EC - payment deleted for order %d"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:662
+#: includes/class.yith-paypal-ec-gateway.php:679
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:655
 #. translators: 1. transaction id .
 msgid "YITH PayPal EC - payment deleted (ID: %s)"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:685
+#: includes/class.yith-paypal-ec-gateway.php:702
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:678
 #. translators: Placeholder is the order id.
 msgid "Refund failed for order %d"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:687
+#: includes/class.yith-paypal-ec-gateway.php:704
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:680
 msgid "Refund failed."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:696
+#: includes/class.yith-paypal-ec-gateway.php:713
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:689
 #. translators: Placeholder 1. amount of refund 2. transaction id 3. order id.
 msgid "Refunded %1$s - Refund ID: %2$s for order %3$d"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:698
+#: includes/class.yith-paypal-ec-gateway.php:715
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:691
 #. translators: Placeholder 1. amount of refund 2. transaction id.
 msgid "Refunded %1$s - Refund ID: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:702
+#: includes/class.yith-paypal-ec-gateway.php:719
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:695
 #. translators: Placeholder 1. order id 2. error message  3. error code.
 msgid "An error occurred while refunding order %1$d: %2$s - Code: %3$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:704
+#: includes/class.yith-paypal-ec-gateway.php:721
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:697
 #. translators: Placeholder 1.error message.
 msgid "An error occurred during the refund: %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:793
+#: includes/class.yith-paypal-ec-gateway.php:810
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:786
 msgid "New payment request for order: #"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:800
+#: includes/class.yith-paypal-ec-gateway.php:817
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:793
 #. translators: placeholder error message.
 msgid "An error occurred during the payment: %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:860
+#: includes/class.yith-paypal-ec-gateway.php:877
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:853
 msgid "Proceed order"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:863
+#: includes/class.yith-paypal-ec-gateway.php:880
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:856
 msgid "Proceed to PayPal"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:866
+#: includes/class.yith-paypal-ec-gateway.php:883
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:859
 msgid "Complete Order"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-gateway.php:909
+#: includes/class.yith-paypal-ec-gateway.php:926
 #: includes/integrations/bh-subscriptions/class.yith-paypal-ec-bh-subscriptions-gateway.php:902
 msgid "PayPal Fee:"
 msgstr ""

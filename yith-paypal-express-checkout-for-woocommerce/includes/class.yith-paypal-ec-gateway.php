@@ -196,6 +196,23 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_Express_Checkout' ) ) {
 		}
 
 		/**
+		 * Process and save admin options after validating nonce.
+		 *
+		 * Overrides the default WooCommerce method to add custom nonce validation
+		 * before saving the payment gateway settings.
+		 *
+		 * @return bool True if settings were saved.
+		 */
+		public function process_admin_options() {
+			if ( ! isset($_POST['_wpnonce']) || ! wp_verify_nonce($_POST['_wpnonce'], 'woocommerce-settings') ) {
+				wp_redirect( admin_url('admin.php?page=yith_paypal_ec_panel&error=nonce') );
+				exit;
+			}
+
+			parent::process_admin_options();
+		}
+
+		/**
 		 * Get the transaction URL.
 		 *
 		 * @param WC_Order $order Order object.
