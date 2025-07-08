@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: YITH Framework\n"
 "Report-Msgid-Bugs-To: YITH <plugins@yithemes.com>\n"
-"POT-Creation-Date: 2025-04-07 15:59:36+00:00\n"
+"POT-Creation-Date: 2025-07-07 05:33:17+00:00\n"
 "PO-Revision-Date: 2021-12-13 12:45:02+0000\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -633,14 +633,14 @@ msgstr "help ons door een goede beoordeling achter te laten"
 msgid ":) Thanks!"
 msgstr ":) Bedankt!"
 
-#: templates/panel/v2/panel-content-page.php:57
+#: templates/panel/v2/panel-content-page.php:58
 #: templates/panel/v2/woocommerce/woocommerce-form.php:69
 #: templates/panel/woocommerce/woocommerce-form.php:27
 #: templates/panel/woocommerce/woocommerce-form.php:31
 msgid "Save Options"
 msgstr "Opties opslaan"
 
-#: templates/panel/v2/panel-content-page.php:58
+#: templates/panel/v2/panel-content-page.php:59
 #: templates/panel/v2/woocommerce/woocommerce-form.php:70
 #: templates/panel/woocommerce/woocommerce-form.php:41
 msgid "Reset Defaults"
