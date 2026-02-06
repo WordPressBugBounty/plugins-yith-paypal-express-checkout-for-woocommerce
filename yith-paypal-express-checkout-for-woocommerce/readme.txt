@@ -3,9 +3,9 @@
 Contributors: yithemes
 Tags: woocommerce paypal express checkout, paypal express checkout, paypal, express checkout for woocommerce, gateway paypal, gateways,recurring payments, yit, yith, yithemes
 Requires PHP: 7.4
-Requires at least: 6.6
-Tested up to: 6.8
-Stable tag: 1.52.0
+Requires at least: 6.7
+Tested up to: 6.9
+Stable tag: 1.55.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html/
 
@@ -84,6 +84,19 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 YITH PayPal Express Checkout for WooCommerce will add a new tab called "PayPal Express Checkout" in "YITH" menu item. There, you will find all YITH plugins with quick access to plugin setting page.
 
 == Changelog ==
+
+= 1.55.0 - Released on 27 January 2026 =
+* New: Support for WooCommerce 10.5
+* Update: YITH plugin framework
+
+= 1.54.0 - Released on 27 November 2025 =
+* New: Support for WooCommerce 10.4
+* New: Support for WordPress 6.9
+* Update: YITH plugin framework
+
+= 1.53.0 - Released on 21 October 2025 =
+* New: Support for WooCommerce 10.3
+* Update: YITH plugin framework
 
 = 1.52.0 - Released on 04 September 2025 =
 * New: Support for WooCommerce 10.2
