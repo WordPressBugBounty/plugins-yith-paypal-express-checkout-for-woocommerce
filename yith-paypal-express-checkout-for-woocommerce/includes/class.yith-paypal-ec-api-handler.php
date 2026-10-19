@@ -184,6 +184,7 @@ if ( ! class_exists( 'YITH_PayPal_EC_API_Handler' ) ) {
 					array(
 						'yith_paypal_ec_back' => 1,
 						'billing_agreement'   => $this->needs_billing_agreement( $order ),
+						'order_key'           => $order->get_order_key(),
 					)
 				),
 				'order'                 => $order,
@@ -220,6 +221,7 @@ if ( ! class_exists( 'YITH_PayPal_EC_API_Handler' ) ) {
 					'billing_agreement'   => $this->needs_billing_agreement( $order ),
 					'token'               => WC()->session->yith_paypal_session['token'],
 					'order_id'            => $order_id,
+					'order_key'           => $order->get_order_key(),
 				);
 				$url   = add_query_arg( $keys, WC()->api_request_url( 'yith_paypal_ec' ) );
 

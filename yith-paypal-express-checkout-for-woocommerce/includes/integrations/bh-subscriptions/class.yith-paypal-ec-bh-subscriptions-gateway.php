@@ -363,11 +363,8 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_EC_BH_Subscriptions' ) ) {
 
 			$token = sanitize_text_field( wp_unslash( $request['token'] ) );
 
-			if ( isset( $request['order_key'] ) ) {
-				$request['order_id'] = wc_get_order_id_by_order_key( sanitize_text_field( wp_unslash( $request['order_key'] ) ) );
-			}
-
-			$order_id = isset( $request['order_id'] ) ? sanitize_text_field( wp_unslash( $request['order_id'] ) ) : 0;
+			$order_key        = isset( $request['order_key'] ) ? sanitize_text_field( wp_unslash( $request['order_key'] ) ) : '';
+			$request_order_id = isset( $request['order_id'] ) ? absint( $request['order_id'] ) : 0;
 
 			try {
 				/**
@@ -381,7 +378,18 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_EC_BH_Subscriptions' ) ) {
 					throw new YITH_PayPal_EC_Exception( $checkout_details );
 				}
 
-				$order             = ! $order_id ? $checkout_details->get_order() : wc_get_order( $order_id );
+				$paypal_order  = $checkout_details->get_order();
+				$paypal_custom = $checkout_details->get_custom();
+				$order         = $order_key ? wc_get_order( wc_get_order_id_by_order_key( $order_key ) ) : false;
+
+				if ( ! $order || ! $order->key_is_valid( $order_key ) || ( $request_order_id && (int) $order->get_id() !== $request_order_id ) || ( $paypal_custom && ! $paypal_order ) || ( $paypal_order && (int) $paypal_order->get_id() !== (int) $order->get_id() ) ) {
+					throw new YITH_PayPal_EC_Exception( esc_html__( 'The order could not be verified.', 'yith-paypal-express-checkout-for-woocommerce' ) );
+				}
+
+				if ( ! $paypal_order && ( ! isset( WC()->session->yith_paypal_session['token'] ) || WC()->session->yith_paypal_session['token'] !== $token ) ) {
+					throw new YITH_PayPal_EC_Exception( esc_html__( 'The PayPal token could not be verified for this order.', 'yith-paypal-express-checkout-for-woocommerce' ) );
+				}
+
 				$with_subscription = false !== $this->api->needs_billing_agreement( $order );
 				if ( $with_subscription && 1 != $checkout_details->get_billing_agreement_accepted_status() ) { //phpcs:ignore
 					// translators: Placeholder is number of order.
@@ -398,7 +406,6 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_EC_BH_Subscriptions' ) ) {
 						'url'       => get_home_url(),
 					)
 				);
-				$this->save_payer_info( $order, $checkout_details, $with_subscription );
 
 				if ( ! is_null( $order ) ) {
 					$args = array(
@@ -443,6 +450,7 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_EC_BH_Subscriptions' ) ) {
 						throw new YITH_PayPal_EC_Exception( $payment_response );
 					}
 
+					$this->save_payer_info( $order, $checkout_details, $with_subscription );
 					$with_subscription && $this->save_billing_agreement_id( $order, $payment_response->get_billing_agreement_id() );
 
 					if ( 0 == $order->get_total() ) {  //phpcs:ignore
@@ -750,6 +758,7 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_EC_BH_Subscriptions' ) ) {
 			}
 
 			foreach ( $args as $key => $value ) {
+				$value = 'Payer PayPal address' === $key ? sanitize_email( $value ) : sanitize_text_field( $value );
 				$order->update_meta_data( $key, $value );
 			}
 
