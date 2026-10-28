@@ -323,6 +323,24 @@ if ( ! class_exists( 'YITH_PayPal_EC_API_Handler' ) ) {
 			return $this->prepare_request( $request );
 		}
 
+		/**
+		 * Get the PayPal merchant account ID (PAL) of the configured API account
+		 *
+		 * @return WP_Error|YITH_PayPal_EC_Response
+		 * @throws YITH_PayPal_EC_Exception Throws an Exception.
+		 * @since 1.62.2
+		 */
+		public function call_get_pal_details() {
+
+			$request = $this->get_request();
+
+			$request->get_pal_details();
+
+			$this->response_handler = 'YITH_PayPal_EC_Response';
+
+			return $this->prepare_request( $request );
+		}
+
 
 		/**
 		 * Do Capture the Authorized payment

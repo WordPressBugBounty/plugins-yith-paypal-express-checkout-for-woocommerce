@@ -304,6 +304,15 @@ if ( ! class_exists( 'YITH_PayPal_EC_Request' ) ) {
 		}
 
 		/**
+		 * Gets the PayPal merchant account ID (PAL) of the API account
+		 *
+		 * @since 1.62.2
+		 */
+		public function get_pal_details() {
+			$this->add_field( 'METHOD', 'GetPalDetails' );
+		}
+
+		/**
 		 * Gets Details about a transaction
 		 *
 		 * @param string $transaction_id Transaction id.

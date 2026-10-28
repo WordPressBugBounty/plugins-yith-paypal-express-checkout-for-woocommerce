@@ -142,6 +142,13 @@ if ( ! class_exists( 'YITH_PayPal_EC_IPN_Handler' ) ) {
 				$order = $this->get_paypal_order( $posted['custom'] );
 			} elseif ( ! empty( $posted['invoice'] ) ) {
 				$order = $this->get_paypal_order_from_invoice( $posted['invoice'] );
+
+				// The invoice is not secret: accept the order only if the IPN refers to its stored PayPal transaction.
+				if ( $order && ! $this->ipn_matches_order_transaction( $order, $posted ) ) {
+					// translators: Placeholder: order id.
+					yith_paypal_ec()->ec->log_add_message( sprintf( __( 'IPN ignored: the transaction does not match the one stored for order #%s', 'yith-paypal-express-checkout-for-woocommerce' ), $order->get_id() ) );
+					$order = false;
+				}
 			}
 
 			if ( $order ) {
@@ -153,6 +160,31 @@ if ( ! class_exists( 'YITH_PayPal_EC_IPN_Handler' ) ) {
 		}
 
 		/**
+		 * Check if the IPN refers to the PayPal transaction stored on the order.
+		 *
+		 * @param   WC_Order  $order   Order.
+		 * @param   array     $posted  Posted arguments.
+		 *
+		 * @return bool
+		 * @since 1.62.2
+		 */
+		protected function ipn_matches_order_transaction( $order, $posted ) {
+			$transaction_id = (string) $order->get_transaction_id();
+
+			if ( '' === $transaction_id ) {
+				return false;
+			}
+
+			foreach ( array( 'txn_id', 'parent_txn_id' ) as $field ) {
+				if ( ! empty( $posted[ $field ] ) && $transaction_id === $posted[ $field ] ) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/**
 		 * Handle a completed payment
 		 *
 		 * @param   WC_Order  $order   Order.
@@ -161,6 +193,9 @@ if ( ! class_exists( 'YITH_PayPal_EC_IPN_Handler' ) ) {
 		 * @throws Exception Throws an exception message.
 		 */
 		protected function process_paypal_request( $order, $posted ) {
+
+			$this->validate_receiver( $order, $posted );
+			yith_paypal_ec()->ec->log_add_message( __( 'Validate receiver OK', 'yith-paypal-express-checkout-for-woocommerce' ) );
 
 			if ( isset( $posted['mc_currency'] ) ) {
 				$this->validate_currency( $order, $posted['mc_currency'] );
@@ -880,7 +915,13 @@ if ( ! class_exists( 'YITH_PayPal_EC_IPN_Handler' ) ) {
 		 */
 		protected function pay_and_complete_order( $order, $ipn_args, $sub_id ) {
 
-			isset( $ipn_args['mc_gross'] ) && $this->validate_amount( $order, $ipn_args['mc_gross'] );
+			if ( ! isset( $ipn_args['mc_gross'] ) || ! is_numeric( $ipn_args['mc_gross'] ) ) {
+				yith_paypal_ec()->ec->log_add_message( __( 'Payment error: IPN subscription payment without gross amount', 'yith-paypal-express-checkout-for-woocommerce' ) );
+				$order->update_status( 'on-hold', __( 'Validation error: PayPal IPN subscription payment without gross amount.', 'yith-paypal-express-checkout-for-woocommerce' ) );
+				exit;
+			}
+
+			$this->validate_amount( $order, $ipn_args['mc_gross'] );
 
 			$order_id = $order->get_id();
 			$sub_id && $order->update_meta_data( 'Subscriber ID', $sub_id );
@@ -984,6 +1025,143 @@ if ( ! class_exists( 'YITH_PayPal_EC_IPN_Handler' ) ) {
 				$order->update_status( 'on-hold', sprintf( __( 'Validation error: PayPal currencies do not match (code %s).', 'yith-paypal-express-checkout-for-woocommerce' ), $currency ) );
 				exit;
 			}
+		}
+
+		/**
+		 * Check that the IPN payment was received by the shop's PayPal merchant account.
+		 *
+		 * A VERIFIED IPN only proves PayPal sent it, not that this shop was paid.
+		 *
+		 * @param   WC_Order  $order   Order object.
+		 * @param   array     $posted  Posted data.
+		 *
+		 * @since 1.62.2
+		 */
+		protected function validate_receiver( $order, $posted ) {
+			$merchant = $this->get_merchant_identifiers();
+
+			$receiver_emails = array();
+			foreach ( array( 'receiver_email', 'business' ) as $field ) {
+				if ( ! empty( $posted[ $field ] ) ) {
+					$receiver_emails[] = strtolower( trim( $posted[ $field ] ) );
+				}
+			}
+			$receiver_id = ! empty( $posted['receiver_id'] ) ? strtoupper( trim( $posted['receiver_id'] ) ) : '';
+
+			$is_valid = ( '' !== $receiver_id && in_array( $receiver_id, $merchant['ids'], true ) ) || array_intersect( $receiver_emails, $merchant['emails'] );
+
+			if ( $is_valid ) {
+				return;
+			}
+
+			$receiver = '' !== $receiver_id ? $receiver_id : implode( ', ', $receiver_emails );
+
+			if ( empty( $merchant['ids'] ) && empty( $merchant['emails'] ) ) {
+				yith_paypal_ec()->ec->log_add_message( __( 'Payment error: unable to determine the shop PayPal merchant account to validate the IPN receiver.', 'yith-paypal-express-checkout-for-woocommerce' ) );
+			}
+
+			// translators: 1. receiver of the payment.
+			yith_paypal_ec()->ec->log_add_message( sprintf( __( 'Payment error: IPN receiver %s does not match the shop PayPal account', 'yith-paypal-express-checkout-for-woocommerce' ), $receiver ) );
+
+			// translators: 1. receiver of the payment.
+			$note = sprintf( __( 'Validation error: PayPal IPN response from a different merchant account (%s).', 'yith-paypal-express-checkout-for-woocommerce' ), wc_clean( $receiver ) );
+
+			// Put unpaid orders on-hold for manual checking, never touch paid orders.
+			if ( $order->has_status( wc_get_is_paid_statuses() ) ) {
+				$order->add_order_note( $note );
+			} else {
+				$order->update_status( 'on-hold', $note );
+			}
+			exit;
+		}
+
+		/**
+		 * Get the email addresses and account IDs of the shop's PayPal merchant account.
+		 *
+		 * @return array
+		 * @since 1.62.2
+		 */
+		protected function get_merchant_identifiers() {
+			$helper = yith_paypal_ec()->ec;
+			$emails = array();
+			$ids    = array();
+
+			// The API subject is the email or the merchant account ID of the account receiving the payments.
+			$subject = trim( (string) $helper->api_subject );
+			if ( '' !== $subject ) {
+				if ( is_email( $subject ) ) {
+					$emails[] = $subject;
+				} else {
+					$ids[] = $subject;
+				}
+			}
+
+			// Classic API usernames are generated from the account email (name_api1.domain.com).
+			$api_username = trim( (string) $helper->api_username );
+			if ( false !== strpos( $api_username, '_api1.' ) ) {
+				$email = preg_replace( '/_api1\./', '@', $api_username, 1 );
+				if ( is_email( $email ) ) {
+					$emails[] = $email;
+				}
+			}
+
+			$pal = $this->get_merchant_pal();
+			if ( '' !== $pal ) {
+				$ids[] = $pal;
+			}
+
+			$identifiers = apply_filters(
+				'yith_paypal_ec_ipn_merchant_identifiers',
+				array(
+					'emails' => $emails,
+					'ids'    => $ids,
+				)
+			);
+
+			return array(
+				'emails' => array_map( 'strtolower', array_filter( array_map( 'trim', (array) $identifiers['emails'] ) ) ),
+				'ids'    => array_map( 'strtoupper', array_filter( array_map( 'trim', (array) $identifiers['ids'] ) ) ),
+			);
+		}
+
+		/**
+		 * Get the PayPal merchant account ID (PAL) of the configured API credentials.
+		 *
+		 * The value is cached per environment and credentials.
+		 *
+		 * @return string
+		 * @since 1.62.2
+		 */
+		protected function get_merchant_pal() {
+			$helper    = yith_paypal_ec()->ec;
+			$cache     = get_option( 'yith_paypal_ec_merchant_pal', array() );
+			$cache     = is_array( $cache ) ? $cache : array();
+			$cache_key = md5( $helper->env . '|' . $helper->api_username . '|' . $helper->api_subject );
+
+			if ( ! empty( $cache[ $cache_key ] ) ) {
+				return $cache[ $cache_key ];
+			}
+
+			if ( empty( $helper->api_username ) || ! class_exists( 'YITH_PayPal_EC_API_Handler' ) ) {
+				return '';
+			}
+
+			try {
+				$api      = yith_paypal_ec()->api ? yith_paypal_ec()->api : new YITH_PayPal_EC_API_Handler();
+				$response = $api->call_get_pal_details();
+				$pal      = is_wp_error( $response ) ? '' : (string) $response->get_response_parameter( 'PAL' );
+			} catch ( Exception $e ) {
+				// translators: 1. error message.
+				yith_paypal_ec()->ec->log_add_message( sprintf( __( 'Unable to retrieve the PayPal merchant account ID: %s', 'yith-paypal-express-checkout-for-woocommerce' ), $e->getMessage() ) );
+				$pal = '';
+			}
+
+			if ( '' !== $pal ) {
+				$cache[ $cache_key ] = $pal;
+				update_option( 'yith_paypal_ec_merchant_pal', $cache, false );
+			}
+
+			return $pal;
 		}
 
 		/**

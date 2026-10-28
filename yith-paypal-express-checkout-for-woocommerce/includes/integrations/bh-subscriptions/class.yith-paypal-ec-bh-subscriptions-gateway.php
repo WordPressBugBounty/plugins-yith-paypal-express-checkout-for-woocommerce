@@ -267,7 +267,7 @@ if ( ! class_exists( 'YITH_Gateway_Paypal_EC_BH_Subscriptions' ) ) {
 		 * @throws YITH_PayPal_EC_Exception Throws an Exception.
 		 */
 		public function wc_api() {
-			error_log(print_r($_REQUEST, true));
+
 			$request = $_REQUEST; //phpcs:ignore
 			// calls set express checkout from cart and returns the token to javascript.
 			if ( isset( $request['yith_paypal_set_express_checkout'] ) && ! isset( $request['woocommerce-order-pay'] ) ) {

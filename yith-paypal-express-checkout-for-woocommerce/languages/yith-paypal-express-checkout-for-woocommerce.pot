@@ -2,11 +2,11 @@
 # This file is distributed under the same license as the YITH PayPal Express Checkout for WooCommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH PayPal Express Checkout for WooCommerce 1.62.1\n"
+"Project-Id-Version: YITH PayPal Express Checkout for WooCommerce 1.63.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-paypal-express-checkout-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2026-10-19 11:23:38+00:00\n"
+"POT-Creation-Date: 2026-10-28 14:34:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -746,330 +746,370 @@ msgstr ""
 msgid "Error response: "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:148
+#: includes/class.yith-paypal-ec-ipn-handler.php:149
+#. translators: Placeholder: order id.
+msgid "IPN ignored: the transaction does not match the one stored for order #%s"
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:155
 msgid "Found order:"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:151
+#: includes/class.yith-paypal-ec-ipn-handler.php:158
 msgid "Order Not Found: #:"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:167
+#: includes/class.yith-paypal-ec-ipn-handler.php:198
+msgid "Validate receiver OK"
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:202
 msgid "Validate currency OK"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:181
+#: includes/class.yith-paypal-ec-ipn-handler.php:216
 #. translators: Placeholder: order id.
 msgid "Found order #%s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:183
+#: includes/class.yith-paypal-ec-ipn-handler.php:218
 #. translators: Placeholder: payment status.
 msgid "Payment status: %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:201
+#: includes/class.yith-paypal-ec-ipn-handler.php:236
 #. translators: Placeholder: order id.
 msgid "Aborting, Order #%d is already complete."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:207
+#: includes/class.yith-paypal-ec-ipn-handler.php:242
 #. translators: Placeholder: transaction type and order id.
 msgid "Aborting, Transaction type %1$s cannot be processed for order #%2$d."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:218
+#: includes/class.yith-paypal-ec-ipn-handler.php:253
 msgid "IPN payment completed"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:226
+#: includes/class.yith-paypal-ec-ipn-handler.php:261
 msgid ""
 "Payment authorized. Change payment status to processing or complete to "
 "capture funds."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:229
+#: includes/class.yith-paypal-ec-ipn-handler.php:264
 #. translators: %s: pending reason.
 msgid "Pending payment (%s)."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:252
-#: includes/class.yith-paypal-ec-ipn-handler.php:311
-#: includes/class.yith-paypal-ec-ipn-handler.php:330
+#: includes/class.yith-paypal-ec-ipn-handler.php:287
+#: includes/class.yith-paypal-ec-ipn-handler.php:346
+#: includes/class.yith-paypal-ec-ipn-handler.php:365
 #. translators: %s: payment status.
 msgid "Payment %s via IPN."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:294
+#: includes/class.yith-paypal-ec-ipn-handler.php:329
 #. translators: %s: order link.
 msgid "Payment for cancelled order %s received"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:296
+#: includes/class.yith-paypal-ec-ipn-handler.php:331
 #. translators: %s: order ID.
 msgid ""
 "Order #%s has been marked as paid via PayPal IPN, but was previously "
 "cancelled. Admin action required."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:315
+#: includes/class.yith-paypal-ec-ipn-handler.php:350
 #. translators: %s: order link.
 msgid "Payment for order %s - refunded"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:317
+#: includes/class.yith-paypal-ec-ipn-handler.php:352
 #. translators: %1$s: order ID, %2$s: reason code.
 msgid "Order #%1$s has been marked as refunded - PayPal reason code: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:334
+#: includes/class.yith-paypal-ec-ipn-handler.php:369
 #. translators: %s: order link.
 msgid "Payment for order %s - reversed"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:336
+#: includes/class.yith-paypal-ec-ipn-handler.php:371
 #. translators: %1$s: order ID, %2$s: reason code.
 msgid ""
 "Order #%1$s has been marked as on-hold due to a reversal - PayPal reason "
 "code: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:349
+#: includes/class.yith-paypal-ec-ipn-handler.php:384
 #. translators: %s: order link.
 msgid "Reversal cancelled for order #%s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:351
+#: includes/class.yith-paypal-ec-ipn-handler.php:386
 #. translators: %1$s: order ID, %2$s: order link.
 msgid ""
 "Order #%1$s reversal was cancelled. Please check the status of payment and "
 "update the order status accordingly here: %2$s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:388
+#: includes/class.yith-paypal-ec-ipn-handler.php:423
 msgid "Subscription Response Start"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:400
+#: includes/class.yith-paypal-ec-ipn-handler.php:435
 msgid "Transaction ID already processed"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:409
+#: includes/class.yith-paypal-ec-ipn-handler.php:444
 #. translators: Placeholder: order id.
 msgid "IPN subscription payment error - %s -  has no subscriptions "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:413
+#: includes/class.yith-paypal-ec-ipn-handler.php:448
 msgid "Subscriptions found:  "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:422
+#: includes/class.yith-paypal-ec-ipn-handler.php:457
 msgid "IPN subscription started"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:469
-#: includes/class.yith-paypal-ec-ipn-handler.php:525
-#: includes/class.yith-paypal-ec-ipn-handler.php:576
-#: includes/class.yith-paypal-ec-ipn-handler.php:577
-#: includes/class.yith-paypal-ec-ipn-handler.php:652
-#: includes/class.yith-paypal-ec-ipn-handler.php:719
+#: includes/class.yith-paypal-ec-ipn-handler.php:504
+#: includes/class.yith-paypal-ec-ipn-handler.php:560
+#: includes/class.yith-paypal-ec-ipn-handler.php:611
+#: includes/class.yith-paypal-ec-ipn-handler.php:612
+#: includes/class.yith-paypal-ec-ipn-handler.php:687
+#: includes/class.yith-paypal-ec-ipn-handler.php:754
 msgid "Renew order creation failed"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:470
-#: includes/class.yith-paypal-ec-ipn-handler.php:526
+#: includes/class.yith-paypal-ec-ipn-handler.php:505
+#: includes/class.yith-paypal-ec-ipn-handler.php:561
 msgid "YITH PayPal EC - Renew order creation failed "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:508
+#: includes/class.yith-paypal-ec-ipn-handler.php:543
 msgid "Paypal echeck payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:514
-#: includes/class.yith-paypal-ec-ipn-handler.php:531
+#: includes/class.yith-paypal-ec-ipn-handler.php:549
+#: includes/class.yith-paypal-ec-ipn-handler.php:566
 msgid "YITH PayPal EC - IPN Pending payment for echeck payment type"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:517
+#: includes/class.yith-paypal-ec-ipn-handler.php:552
 msgid "Subscription has been suspended because pending payment via echeck"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:519
+#: includes/class.yith-paypal-ec-ipn-handler.php:554
 msgid ""
 "YITH PayPal EC - Subscription has been suspended because pending payment "
 "via echeck"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:541
+#: includes/class.yith-paypal-ec-ipn-handler.php:576
 msgid ""
 "YITH PayPal EC - IPN request ignored - Profile ID does not match "
 "Subscription subscriber ID, for order "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:546
-#: includes/class.yith-paypal-ec-ipn-handler.php:824
+#: includes/class.yith-paypal-ec-ipn-handler.php:581
+#: includes/class.yith-paypal-ec-ipn-handler.php:859
 #. translators: Placeholder: order id.
 msgid ""
 "IPN subscription cancellation request ignored - order %s has no "
 "subscriptions"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:570
-#: includes/class.yith-paypal-ec-ipn-handler.php:582
-#: includes/class.yith-paypal-ec-ipn-handler.php:599
-#: includes/class.yith-paypal-ec-ipn-handler.php:647
-#: includes/class.yith-paypal-ec-ipn-handler.php:657
-#: includes/class.yith-paypal-ec-ipn-handler.php:672
-#: includes/class.yith-paypal-ec-ipn-handler.php:714
-#: includes/class.yith-paypal-ec-ipn-handler.php:724
-#: includes/class.yith-paypal-ec-ipn-handler.php:742
+#: includes/class.yith-paypal-ec-ipn-handler.php:605
+#: includes/class.yith-paypal-ec-ipn-handler.php:617
+#: includes/class.yith-paypal-ec-ipn-handler.php:634
+#: includes/class.yith-paypal-ec-ipn-handler.php:682
+#: includes/class.yith-paypal-ec-ipn-handler.php:692
+#: includes/class.yith-paypal-ec-ipn-handler.php:707
+#: includes/class.yith-paypal-ec-ipn-handler.php:749
+#: includes/class.yith-paypal-ec-ipn-handler.php:759
+#: includes/class.yith-paypal-ec-ipn-handler.php:777
 msgid "YITH PayPal EC - IPN Failed payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:571
+#: includes/class.yith-paypal-ec-ipn-handler.php:606
 msgid "IPN Failed payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:583
-#: includes/class.yith-paypal-ec-ipn-handler.php:600
+#: includes/class.yith-paypal-ec-ipn-handler.php:618
+#: includes/class.yith-paypal-ec-ipn-handler.php:635
 msgid "IPN Failed payment for order "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:596
-#: includes/class.yith-paypal-ec-ipn-handler.php:669
-#: includes/class.yith-paypal-ec-ipn-handler.php:739
+#: includes/class.yith-paypal-ec-ipn-handler.php:631
+#: includes/class.yith-paypal-ec-ipn-handler.php:704
+#: includes/class.yith-paypal-ec-ipn-handler.php:774
 msgid "Subscription has been suspended for failed payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:615
+#: includes/class.yith-paypal-ec-ipn-handler.php:650
 msgid ""
 " IPN request ignored - Profile ID does not match Subscription subscriber "
 "ID, for order "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:621
+#: includes/class.yith-paypal-ec-ipn-handler.php:656
 #. translators: Placeholder: order id.
 msgid ""
 "IPN subscription failed payment request ignored - order %s has no "
 "subscriptions"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:676
-#: includes/class.yith-paypal-ec-ipn-handler.php:746
+#: includes/class.yith-paypal-ec-ipn-handler.php:711
+#: includes/class.yith-paypal-ec-ipn-handler.php:781
 #. translators: Placeholder: order id.
 msgid "IPN Failed payment for order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:688
+#: includes/class.yith-paypal-ec-ipn-handler.php:723
 #. translators: Placeholder: order id.
 msgid ""
 "IPN subscription failed payment - new PayPal Profile ID linked to this "
 "subscription, for order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:694
+#: includes/class.yith-paypal-ec-ipn-handler.php:729
 #. translators: Placeholder: order id.
 msgid ""
 "IPN subscription failed payment request ignored - order %s there are not "
 "subscriptions"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:762
+#: includes/class.yith-paypal-ec-ipn-handler.php:797
 #. translators: Placeholder: order id.
 msgid ""
 "IPN request ignored - Profile ID does not match Subscription subscriber ID, "
 "for order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:769
+#: includes/class.yith-paypal-ec-ipn-handler.php:804
 #. translators: Placeholder: order id.
 msgid ""
 "YITH PayPal EC - IPN subscription cancellation for failed request ignored. "
 "There are no subscriptions in order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:790
+#: includes/class.yith-paypal-ec-ipn-handler.php:825
 msgid ""
 "Subscription cancelled for max failed attempts: "
 "recurring_payment_suspended_due_to_max_failed_payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:791
+#: includes/class.yith-paypal-ec-ipn-handler.php:826
 msgid ""
 "YITH PayPal EC - Subscription cancelled for max failed attempts: "
 "recurring_payment_suspended_due_to_max_failed_payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:794
+#: includes/class.yith-paypal-ec-ipn-handler.php:829
 #. translators: Placeholder: order id.
 msgid ""
 "Subscription cancelled for max failed attempts: "
 "recurring_payment_suspended_due_to_max_failed_payment for order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:797
+#: includes/class.yith-paypal-ec-ipn-handler.php:832
 msgid ""
 "Subscription has been suspended. PayPal IPN message received: "
 "recurring_payment_suspended_due_to_max_failed_payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:802
-#: includes/class.yith-paypal-ec-ipn-handler.php:804
+#: includes/class.yith-paypal-ec-ipn-handler.php:837
+#: includes/class.yith-paypal-ec-ipn-handler.php:839
 msgid ""
 "YITH PayPal EC - IPN message: "
 "recurring_payment_suspended_due_to_max_failed_payment"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:818
+#: includes/class.yith-paypal-ec-ipn-handler.php:853
 #. translators: Placeholder: order id.
 msgid ""
 "IPN subscription cancellation request ignored - new PayPal Profile ID "
 "linked to this subscription, for order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:840
+#: includes/class.yith-paypal-ec-ipn-handler.php:875
 msgid "Subscription cancelled by gateway"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:842
+#: includes/class.yith-paypal-ec-ipn-handler.php:877
 msgid "YITH PayPal EC - IPN subscription cancelled for the order."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:846
+#: includes/class.yith-paypal-ec-ipn-handler.php:881
 #. translators: Placeholder: order id.
 msgid "IPN subscription cancelled order %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:889
+#: includes/class.yith-paypal-ec-ipn-handler.php:919
+msgid "Payment error: IPN subscription payment without gross amount"
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:920
+msgid "Validation error: PayPal IPN subscription payment without gross amount."
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:930
 msgid "IPN subscription payment completed."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:915
-#: includes/class.yith-paypal-ec-ipn-handler.php:927
+#: includes/class.yith-paypal-ec-ipn-handler.php:956
+#: includes/class.yith-paypal-ec-ipn-handler.php:968
 #. translators: 1. track id.
 msgid ""
 "YITH PayPal EC - Subscription IPN Error: IPN %s message has already been "
 "correctly handled."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:963
+#: includes/class.yith-paypal-ec-ipn-handler.php:1004
 #. translators: 1. amount received.
 msgid "Payment error: Amounts do not match (gross %s)"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:967
+#: includes/class.yith-paypal-ec-ipn-handler.php:1008
 #. translators: 1. amount received.
 msgid "Validation error: PayPal amounts do not match (gross %s)."
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:981
+#: includes/class.yith-paypal-ec-ipn-handler.php:1022
 #. translators: 1. currency of order 2. currency received.
 msgid "Payment error: Currencies do not match (sent %1$s | returned %2$s )"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-ipn-handler.php:984
+#: includes/class.yith-paypal-ec-ipn-handler.php:1025
 #. translators: %s: currency code.
 msgid "Validation error: PayPal currencies do not match (code %s)."
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:1060
+msgid ""
+"Payment error: unable to determine the shop PayPal merchant account to "
+"validate the IPN receiver."
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:1064
+#. translators: 1. receiver of the payment.
+msgid "Payment error: IPN receiver %s does not match the shop PayPal account"
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:1067
+#. translators: 1. receiver of the payment.
+msgid ""
+"Validation error: PayPal IPN response from a different merchant account "
+"(%s)."
+msgstr ""
+
+#: includes/class.yith-paypal-ec-ipn-handler.php:1155
+#. translators: 1. error message.
+msgid "Unable to retrieve the PayPal merchant account ID: %s"
 msgstr ""
 
 #: includes/class.yith-paypal-ec-request.php:100
@@ -1077,17 +1117,17 @@ msgstr ""
 msgid "Orders with %s"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-request.php:404
-#: includes/class.yith-paypal-ec-request.php:525
+#: includes/class.yith-paypal-ec-request.php:413
+#: includes/class.yith-paypal-ec-request.php:534
 msgid "Total Discount"
 msgstr ""
 
-#: includes/class.yith-paypal-ec-request.php:420
-#: includes/class.yith-paypal-ec-request.php:540
+#: includes/class.yith-paypal-ec-request.php:429
+#: includes/class.yith-paypal-ec-request.php:549
 msgid "Gift Card: "
 msgstr ""
 
-#: includes/class.yith-paypal-ec-request.php:565
+#: includes/class.yith-paypal-ec-request.php:574
 msgid "#"
 msgstr ""
 
